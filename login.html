@@ -31,7 +31,7 @@ body{min-height:100vh;overflow:hidden}.bg{position:fixed;inset:0;background:url(
 <form class="card" id="loginForm">
 <div class="field"><label class="label" for="username">USERNAME</label><input class="input" id="username" autocomplete="username" placeholder="ENTER USERNAME" required></div>
 <div class="field"><label class="label" for="password">PASSWORD</label><input class="input" id="password" type="password" autocomplete="current-password" placeholder="ENTER PASSWORD" required></div>
-<button class="btn" id="loginBtn" type="submit">LOGIN</button><div class="status" id="status"></div>
+<button class="btn" id="loginBtn" type="submit">LOGIN</button><div class="status" id="status"></div><div style="margin-top:8px;color:#444;font:6px Orbitron;letter-spacing:1px">HWID MODE: BROWSER DEVICE ID</div>
 </form>
 <a class="back" href="./index.html">← BACK TO HOME</a>
 </div></main><div class="footer">© 2026 BASTIEN X EVELYN • FEARLESS IS KING</div>
@@ -42,7 +42,7 @@ const form=document.getElementById("loginForm"),u=document.getElementById("usern
 form.addEventListener("submit",async e=>{
  e.preventDefault(); b.disabled=true; s.className="status"; s.textContent="AUTHENTICATING...";
  try{await loginWithKeyAuth(u.value.trim(),p.value);s.className="status ok";s.textContent="ACCESS GRANTED";setTimeout(()=>location.replace("./admin.html"),250)}
- catch(err){s.className="status bad";s.textContent=err?.message||"LOGIN FAILED";b.disabled=false;p.focus();p.select()}
+ catch(err){console.error("BASTIEN KeyAuth login:",err);s.className="status bad";s.textContent=err?.message||"LOGIN FAILED";b.disabled=false;p.focus();p.select()}
 });
 </script>
 </body></html>
