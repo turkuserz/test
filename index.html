@@ -3,16 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>BASTIEN • FEARLESS</title>
+<title>BASTIEN</title>
+<link rel="preload" as="image" href="./assets/Bastienstyle.webp" type="image/webp" fetchpriority="high">
 <link rel="icon" type="image/png" href="./assets/logobastien.png">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/premium.css">
 <link rel="stylesheet" href="./css/smooth.css">
+<link rel="stylesheet" href="./css/global.css">
+<link rel="stylesheet" href="./css/final-polish.css">
+<link rel="stylesheet" href="./css/performance.css">
+<link rel="stylesheet" href="./css/music-player.css?v=20260920-wellesley">
 <style>
 .site-wrapper{opacity:1!important;transform:none!important;filter:none!important}
 
-/* STABLE SLICK OVERRIDE */
 .home-bg,.roster-bg{
   animation:none!important;
   will-change:auto!important;
@@ -20,10 +24,32 @@
 }
 
 </style>
+
+<style>
+.members-container{display:flex;gap:12px;justify-content:center;align-items:center}
+.member-box{position:relative;display:flex!important;flex-direction:column;align-items:center;justify-content:center;width:200px;min-width:200px;height:70px;padding:0 18px!important;border:1px solid rgba(255,255,255,.20)!important;border-radius:6px!important;background:rgba(7,7,7,.62)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 12px 30px rgba(0,0,0,.24),inset 0 0 0 1px rgba(255,255,255,.015);transition:transform .22s cubic-bezier(.22,1,.36,1),border-color .22s,background .22s,box-shadow .22s!important}
+.member-box:before{content:"";position:absolute;inset:0;border-radius:6px;background:linear-gradient(135deg,rgba(255,255,255,.035),transparent 50%);opacity:0;transition:opacity .22s}
+.member-box:hover{transform:translateY(-3px)!important;border-color:rgba(255,255,255,.34)!important;background:rgba(12,12,12,.74)!important;box-shadow:0 18px 36px rgba(0,0,0,.38),0 0 20px rgba(255,255,255,.045)!important}
+.member-box:hover:before{opacity:1}
+.member-name{position:relative;z-index:1;font-family:Orbitron,Arial,sans-serif!important;font-size:20px!important;font-weight:800!important;line-height:1!important;letter-spacing:2px!important;color:#f5f5f5!important;text-shadow:0 2px 12px rgba(255,255,255,.12)}
+.member-role{position:relative;z-index:1;margin-top:7px!important;font-family:Orbitron,Arial,sans-serif!important;font-size:10px!important;font-weight:400!important;letter-spacing:1.5px!important;color:#8a8a8a!important}
+@media(max-width:520px){.members-container{gap:9px;width:100%}.member-box{width:calc(50% - 5px);min-width:0;height:66px}.member-name{font-size:16px!important;letter-spacing:1.5px!important}.member-role{font-size:8px!important}}
+
+.nav .nav-icon{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;opacity:.78;flex:none;transition:transform .22s ease,opacity .22s ease}
+.nav a:hover .nav-icon,.nav a.active .nav-icon{opacity:1;transform:translateY(-.5px)}
+.nav a span{display:inline-block}
+@media(max-width:560px){.nav .nav-icon{width:11px;height:11px}.nav a{gap:6px}}
+</style>
 </head>
-<body>
+<body class="home-page">
 <div class="home-bg" aria-hidden="true"></div>
 <div class="home-shade" aria-hidden="true"></div>
+
+<nav class="nav home-nav" aria-label="Primary navigation">
+  <a class="active" href="/" aria-label="Home"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5M9 21v-6h6v6"/></svg><span>HOME</span></a>
+  <a href="/members" aria-label="Members"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3.5 20c.4-3.3 2.2-5 5.5-5s5.1 1.7 5.5 5M14 15.5c2.9-.4 5 .9 6 4.5"/></svg><span>MEMBER</span></a>
+  <a href="/login" aria-label="Admin"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15" r="1"/></svg><span>ADMIN</span></a>
+</nav>
 
 <div class="site-wrapper" id="siteWrapper">
     <div class="top-header-container">
@@ -40,11 +66,11 @@
         <img src="./assets/logobastien.png" alt="BASTIEN LOGO" class="logo-crest">
 
         <div class="members-container">
-            <a href="./members.html?member=BASTIEN" class="member-box" onclick="playClickEffect()">
+            <a href="/members?member=BASTIEN" class="member-box" onclick="playClickEffect()">
                 <div class="member-name">BASTIEN</div>
                 <div class="member-role">MEMBER</div>
             </a>
-            <a href="./members.html?member=EVELYN" class="member-box" onclick="playClickEffect()">
+            <a href="/members?member=EVELYN" class="member-box" onclick="playClickEffect()">
                 <div class="member-name">EVELYN</div>
                 <div class="member-role">MEMBER</div>
             </a>
@@ -55,9 +81,9 @@
         <div class="supervised-container">
             <div class="supervised-title">SUPERVISED BY</div>
             <div class="supervised-list">
-                <a href="./members.html?supervised=STANNOWAYHOME" class="supervised-item" onclick="playClickEffect()">STANNOWAYHOME</a>
-                <a href="./members.html?supervised=JOPNOK" class="supervised-item" onclick="playClickEffect()">JOPNOK</a>
-                <a href="./members.html?supervised=ASSASSIN" class="supervised-item" onclick="playClickEffect()">ASSASSIN</a>
+                <a href="/members?supervised=STANNOWAYHOME" class="supervised-item" onclick="playClickEffect()">STANNOWAYHOME</a>
+                <a href="/members?supervised=JOPNOK" class="supervised-item" onclick="playClickEffect()">JOPNOK</a>
+                <a href="/members?supervised=ASSASSIN" class="supervised-item" onclick="playClickEffect()">ASSASSIN</a>
             </div>
         </div>
         <div class="footer-line"></div>
@@ -74,34 +100,7 @@
             <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
         </a>
     </div>
-
-    <div class="music-player" id="musicPlayer">
-        <div class="player-mini-content">
-            <div class="player-art" id="playerArtMini" style="background-image:url('./assets/logobastien.png');background-size:cover;background-position:center" >
-                <div class="player-art-overlay">
-                    <div class="mini-eq"><span></span><span></span><span></span><span></span></div>
-                </div>
-            </div>
-            <div class="player-info-mini" >
-                <div class="track-title">BASTIEN</div>
-                <div class="track-artist">FEARLESS</div>
-            </div>
-            <button class="mini-toggle-btn" id="miniPlayPauseBtn" title="เปิด/ปิดเสียง" aria-label="เปิด/ปิดเสียง">
-                <svg id="miniPlayIcon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-2-3.16v6.32a3.5 3.5 0 0 0 2-3.16z"/>
-                </svg>
-                <svg id="miniPauseIcon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:none">
-                    <path d="M4 9v6h4l5 4V5L8 9H4zm11.5-3.1 1.4-1.4 1.1 1.1-1.4 1.4 1.4 1.4-1.1 1.1-1.4-1.4-1.4 1.4-1.1-1.1 1.4-1.4-1.4-1.4 1.1-1.1 1.4 1.4z"/>
-                </svg>
-            </button>
-        </div>
-    </div>
-</div>
-
-<iframe id="youtube-player" frameborder="0" allow="autoplay; encrypted-media" width="0" height="0"
-    src="https://www.youtube.com/embed/Vu3SG3WRt8o?enablejsapi=1&autoplay=1&controls=0&loop=1&playlist=Vu3SG3WRt8o&playsinline=1"></iframe>
-
-<script src="./js/music.js" defer></script>
+<script src="./js/music.js?v=20260920-wellesley" defer></script>
 
 
 <script src="./js/transition.js" defer></script>
